@@ -126,141 +126,19 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
-            overflow: hidden;
         }
-        .hero-bg-gradient {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, transparent 50%, rgba(244,63,94,0.08) 100%);
-            filter: blur(60px);
-            pointer-events: none;
-        }
-        .hero-shapes {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .elegant-shape {
-            position: absolute;
-            opacity: 0;
-            animation: shape-in 2.4s cubic-bezier(0.23, 0.86, 0.39, 0.96) forwards;
-        }
-        .elegant-shape .shape-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            border-radius: 999px;
-            border: 2px solid rgba(255,255,255,0.15);
-            box-shadow: 0 8px 32px 0 rgba(255,255,255,0.08);
-            backdrop-filter: blur(2px);
-            animation: shape-float 12s ease-in-out infinite;
-        }
-        .elegant-shape .shape-inner::before {
+        .hero::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: 999px;
-            background: linear-gradient(to right, var(--shape-color, rgba(255,255,255,0.15)), transparent);
-        }
-        .elegant-shape .shape-inner::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 999px;
-            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.18), transparent 70%);
-        }
-        @keyframes shape-in {
-            0% {
-                opacity: 0;
-                transform: translateY(-150px) rotate(calc(var(--rotate, 0deg) - 15deg));
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotate(var(--rotate, 0deg));
-            }
-        }
-        @keyframes shape-float {
-            0%, 100% { translate: 0 0; }
-            50% { translate: 0 15px; }
-        }
-        .elegant-shape--1 {
-            --rotate: 12deg;
-            --shape-color: rgba(99, 102, 241, 0.22);
-            left: -10%;
-            top: 15%;
+            top: -20%;
+            right: -10%;
             width: 600px;
-            height: 140px;
-            animation-delay: 0.3s;
-        }
-        .elegant-shape--2 {
-            --rotate: -15deg;
-            --shape-color: rgba(244, 63, 94, 0.22);
-            right: -5%;
-            top: 70%;
-            width: 500px;
-            height: 120px;
-            animation-delay: 0.5s;
-        }
-        .elegant-shape--3 {
-            --rotate: -8deg;
-            --shape-color: rgba(139, 92, 246, 0.22);
-            left: 5%;
-            bottom: 5%;
-            width: 300px;
-            height: 80px;
-            animation-delay: 0.4s;
-        }
-        .elegant-shape--4 {
-            --rotate: 20deg;
-            --shape-color: rgba(245, 158, 11, 0.22);
-            right: 15%;
-            top: 10%;
-            width: 200px;
-            height: 60px;
-            animation-delay: 0.6s;
-        }
-        .elegant-shape--5 {
-            --rotate: -25deg;
-            --shape-color: rgba(34, 211, 238, 0.22);
-            left: 20%;
-            top: 5%;
-            width: 150px;
-            height: 40px;
-            animation-delay: 0.7s;
-        }
-        @media (min-width: 768px) {
-            .elegant-shape--1 { left: -5%; top: 20%; }
-            .elegant-shape--2 { right: 0; top: 75%; }
-            .elegant-shape--3 { left: 10%; bottom: 10%; }
-            .elegant-shape--4 { right: 20%; top: 15%; }
-            .elegant-shape--5 { left: 25%; top: 10%; }
-        }
-        .hero-vignette-top, .hero-vignette-bottom {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 120px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
             pointer-events: none;
-            z-index: 2;
         }
-        .hero-vignette-top {
-            top: 0;
-            background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
-        }
-        .hero-vignette-bottom {
-            bottom: 0;
-            background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            max-width: 720px;
-            margin: 0 auto;
-        }
+        .hero-content { position: relative; z-index: 1; }
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -271,7 +149,7 @@
             background: var(--bg-card);
             font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .hero-badge .dot {
             width: 8px;
@@ -288,8 +166,7 @@
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 1.75rem;
-            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
         }
         .hero h1 .gradient {
             background: var(--gradient-1);
@@ -300,15 +177,11 @@
         .hero p {
             font-size: 1.15rem;
             color: var(--text-muted);
-            max-width: 640px;
-            margin: 0 auto 2.25rem;
+            max-width: 580px;
+            margin-bottom: 2rem;
             line-height: 1.7;
         }
-        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-        @media (prefers-reduced-motion: reduce) {
-            .elegant-shape, .elegant-shape .shape-inner { animation: none; }
-            .elegant-shape { opacity: 1; transform: rotate(var(--rotate, 0deg)); }
-        }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn {
             padding: 0.75rem 1.75rem;
             border-radius: 12px;
@@ -663,15 +536,6 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <div class="hero-bg-gradient"></div>
-    <div class="hero-shapes">
-        <div class="elegant-shape elegant-shape--1"><div class="shape-inner"></div></div>
-        <div class="elegant-shape elegant-shape--2"><div class="shape-inner"></div></div>
-        <div class="elegant-shape elegant-shape--3"><div class="shape-inner"></div></div>
-        <div class="elegant-shape elegant-shape--4"><div class="shape-inner"></div></div>
-        <div class="elegant-shape elegant-shape--5"><div class="shape-inner"></div></div>
-    </div>
-    <div class="hero-vignette-top"></div>
     <div class="container hero-content">
         <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero.badge">Disponible para trabajar</span></div>
         <h1 data-i18n="hero.title" data-i18n-html>Hola, soy <span class="gradient">Daniel</span><br>Full Stack Developer</h1>
@@ -681,7 +545,6 @@
             <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta2">Contactar</a>
         </div>
     </div>
-    <div class="hero-vignette-bottom"></div>
 </section>
 
 <!-- ABOUT -->
